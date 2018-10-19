@@ -1,0 +1,57 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.3.2"
+  title: X-FACTOR BLOG APPLICATION
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /xfactor/addUser:
+    post:
+      tags:
+        - addUser
+      summary: Adds user to the xfactor blog repo
+      description: ""
+      operationId: createUser
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Adding new user
+          required: true
+          schema:
+              $ref: "#/definitions/AddUserRequest"
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/AddUserResponse"
+        "400":
+          description: Invalid Request
+definitions:
+  AddUserRequest:
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName: 
+        type: string
+      password:
+        type: string
+      confirmPassword:
+        type: string
+        
+  AddUserResponse:
+    type: object
+    properties:
+      unqiueId:
+        type: string
+  
